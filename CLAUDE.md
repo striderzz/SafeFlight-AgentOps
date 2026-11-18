@@ -1,6 +1,6 @@
 # CLAUDE.md: IncidentIQ AgentOps build guide
 
-This file tells Claude (Claude Code) how to build this project. Read **README.md** first: it is the design spec. **INFO.md** is the interview prep companion. This file is the build plan.
+This file tells Claude (Claude Code) how to build this project. Read **README.md** first: it is the design spec. **INFO.md** (overview, system design, workflows) and **INTERVIEW.md** (interview Q&A) are the companions. This file is the build plan.
 
 ## Goal
 
@@ -57,7 +57,7 @@ Only after all eight phases are done and the README results are filled from real
 - Keep the scope at the level in README.md: this is a portfolio project for a master's graduate with about a year of experience. Do not add components the README does not list. The owner must be able to explain every line in an interview.
 - Build **one phase at a time**, in order. Each phase must run end to end before the next starts.
 - After each phase, update the **Roadmap checklist in README.md** and commit with a clear message.
-- **Never invent results.** Every number in README.md and INFO.md (accuracy, latency, throughput, cost) must come from a run in this repo. Save the raw output in `docs/results/`.
+- **Never invent results.** Every number in README.md, INFO.md and INTERVIEW.md (accuracy, latency, throughput, cost) must come from a run in this repo. Save the raw output in `docs/results/`.
 - **Screenshots:** when a phase produces something visible (UI, Grafana dashboard, test or eval report), capture real screenshots into `docs/screenshots/` and embed them in README.md. Never mock them up.
 - The UI follows the unslop skill (`~/.claude/skills/unslop`): run `/unslop` on the main screens before calling the UI done.
 - Keep secrets out of git: `.env` (gitignored) plus a committed `.env.example`.
@@ -86,4 +86,4 @@ Only after all eight phases are done and the README results are filled from real
 
 ## Status
 
-Only `README.md`, `INFO.md` and this file exist so far. Start at **Phase 1**.
+Only `README.md`, `INFO.md`, `INTERVIEW.md` and this file exist so far. Start at **Phase 1**.

@@ -286,6 +286,11 @@ Nothing has been measured yet. Each value is filled in from a real run, and the 
 - Tracing with Langfuse for per-step latency and cost views
 - Run the reasoning step of replay evals through the Message Batches API at half price
 
+## Docs
+
+- [INFO.md](INFO.md): high-level overview, system design (architecture, data model) and workflow diagrams.
+- [INTERVIEW.md](INTERVIEW.md): 30-second and 2-minute pitches, interview questions with answers, resume bullets.
+
 ## Related projects
 
 - [IronPay LedgerAPI](https://github.com/striderzz/IronPay-LedgerAPI): the payments service IncidentIQ investigates; every eval scenario breaks it on purpose
