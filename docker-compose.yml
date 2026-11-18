@@ -1,0 +1,69 @@
+# Full local stack. Phase 1 skeleton; Langfuse joins in Phase 8.
+services:
+  redis:
+    image: redis/redis-stack-server:7.4.0-v1  # Redis with the vector index used by the semantic cache
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  safety-data:
+    build:
+      context: .
+      dockerfile: docker/safety-data.Dockerfile
+    ports:
+      - "8101:8101"
+
+  live-signals:
+    build:
+      context: .
+      dockerfile: docker/live-signals.Dockerfile
+    ports:
+      - "8102:8102"
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      SAFETY_DATA_MCP_URL: http://safety-data:8101/mcp
+      LIVE_SIGNALS_MCP_URL: http://live-signals:8102/mcp
+      CREWAI_DISABLE_TELEMETRY: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - state:/app/var
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    depends_on:
+      redis:
+        condition: service_healthy
+      safety-data:
+        condition: service_started
+      live-signals:
+        condition: service_started
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    environment:
+      SAFEFLIGHT_API_URL: http://api:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  state:

@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+# local state and downloaded data are never committed
+var/
+data/*
+!data/.gitkeep
