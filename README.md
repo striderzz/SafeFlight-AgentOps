@@ -377,7 +377,7 @@ Nothing has been measured yet. Each value is filled in from a real run, and the 
 
 ## Roadmap
 
-- [ ] Phase 1: scaffold, Dockerfiles, Compose skeleton, CI (ruff + pytest + web build), LLM layer with fake and replay providers, cost log and caps
+- [x] Phase 1: scaffold, Dockerfiles, Compose skeleton, CI (ruff + pytest + web build), LLM layer with fake and replay providers, cost log and caps
 - [ ] Phase 2: data download and ingestion into DuckDB (NTSB, BTS T-100, OpenFlights) with data tests
 - [ ] Phase 3: Bayesian carrier score and bands with hand-computed unit tests
 - [ ] Phase 4: `safety-data` MCP server and hybrid RAG over NTSB narratives, retrieval eval set
