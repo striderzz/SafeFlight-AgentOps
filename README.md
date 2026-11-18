@@ -378,8 +378,8 @@ Nothing has been measured yet. Each value is filled in from a real run, and the 
 ## Roadmap
 
 - [x] Phase 1: scaffold, Dockerfiles, Compose skeleton, CI (ruff + pytest + web build), LLM layer with fake and replay providers, cost log and caps
-- [ ] Phase 2: data download and ingestion into DuckDB (NTSB, BTS T-100, OpenFlights) with data tests
-- [ ] Phase 3: Bayesian carrier score and bands with hand-computed unit tests
+- [x] Phase 2: data download and ingestion into DuckDB (NTSB, BTS T-100, OpenFlights) with data tests
+- [x] Phase 3: Bayesian carrier score and bands with hand-computed unit tests
 - [ ] Phase 4: `safety-data` MCP server and hybrid RAG over NTSB narratives, retrieval eval set
 - [ ] Phase 5: flight provider (fixtures + live adapter), `live-signals` MCP server (METAR/TAF, OpenSky), bulletin ingestion and `track_crosses` with the geometry test set
 - [ ] Phase 6: `build_self_transfers` with pairing rules, booking links and rule tests

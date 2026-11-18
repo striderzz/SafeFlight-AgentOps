@@ -1,0 +1,21 @@
+{
+  "window": "2016-2025",
+  "us_part121_129_accidents": 275,
+  "attributed_to_a_bts_carrier": 262,
+  "carrier_map_methods": {
+    "alias": 60,
+    "unmapped": 287,
+    "designator": 97,
+    "fuzzy": 214
+  },
+  "tables": {
+    "airlines": 5887,
+    "airports": 6072,
+    "events": 1316,
+    "event_aircraft": 1399,
+    "findings": 1908,
+    "narratives": 1093,
+    "t100_carrier_month": 44015,
+    "carrier_scores": 438
+  }
+}

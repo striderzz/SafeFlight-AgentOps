@@ -1,0 +1,48 @@
+{
+  "window": [
+    2016,
+    2025
+  ],
+  "snapshot_id": "93092246002a6cd3",
+  "carriers_scored": 438,
+  "carriers_with_events": 41,
+  "prior_moments": {
+    "alpha": 100.0,
+    "beta": 78.86087513952849,
+    "method": "moments_floored",
+    "industry_rate": 1.2680559253631167
+  },
+  "prior_ml_check": {
+    "alpha": 78875784.69274493,
+    "beta": 62190507.80116661,
+    "method": "ml",
+    "industry_rate": 1.2682929836322276
+  },
+  "heterogeneity": "No detectable difference between carriers beyond chance: the between-carrier variance estimate was at or below the floor, so the prior is tight and posteriors sit close to the industry rate. The ML fit agrees (very large alpha and beta).",
+  "bands": {
+    "limited": 425,
+    "typical": 13
+  },
+  "sensitivity": {
+    "fatal_only_heavier": {
+      "weights": {
+        "fatal": 1.0,
+        "serious": 0.3,
+        "minor": 0.1,
+        "none": 0.1
+      },
+      "bands_changed": 0,
+      "carriers": []
+    },
+    "all_equal": {
+      "weights": {
+        "fatal": 1.0,
+        "serious": 1.0,
+        "minor": 1.0,
+        "none": 1.0
+      },
+      "bands_changed": 0,
+      "carriers": []
+    }
+  }
+}

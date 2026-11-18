@@ -576,7 +576,7 @@ shrinkage weight = E_c / (beta + E_c)     share of the estimate that comes from 
 
 **Bands.** These match the labels the `web/` app already uses, plus one it still needs:
 
-- **Limited data** if the shrinkage weight is below 0.5, meaning the prior outweighs the carrier's own data (equivalently `E_c < beta`), or the carrier has no T-100 exposure at all;
+- **Limited data** if the carrier's recency-weighted exposure is below 1 million departures, or it has no T-100 exposure at all. (The first design used "shrinkage weight below 0.5"; on the real data the between-carrier variance is at the floor, the prior is tight, and that rule labelled every carrier Limited data, including Southwest with 7 million departures. A plain exposure threshold says what the label means.)
 - **Strong record** if the upper interval bound is below `m`;
 - **Higher rate** if the lower interval bound is above `m` (the sample-data UI has no state for this yet; Phase 9 adds it);
 - **Typical** otherwise.
@@ -592,6 +592,8 @@ shrinkage weight = E_c / (beta + E_c)     share of the estimate that comes from 
 Carrier A's raw rate of zero would rank it best; shrinkage keeps it near the industry rate and the band says the data is too thin. Carrier C's raw rate of 50 would rank it far worst; one event on a tiny base does not support that. These exact cases become unit tests in Phase 3.
 
 **Known approximations.** Weighted counts are not integers, so the Poisson likelihood is a working model, not an exact one. Severity weights are judgment calls; Phase 3 includes a sensitivity check that reports how many bands change under other reasonable weights.
+
+**What the real data showed (Phase 3 run, raw output in `docs/results/scoring/`).** 275 NTSB accidents on Part 121/129 flights in the US from 2016 to 2025; 262 attributed to a BTS carrier. The method-of-moments estimate of between-carrier variance came out at or below the floor (coefficient of variation 10%), and the maximum-likelihood check agreed (very large alpha and beta): **US carriers' accident rates are not distinguishable beyond chance in this window**. The 13 largest carriers all land in Typical, every other carrier is Limited data, and neither alternative severity weighting changes a single band. SafeFlight says this plainly instead of inventing a ranking; when bands tie, ranking falls through to price and duration. Accidents outside the US are excluded because T-100 exposure only covers flights to, from and within the US.
 
 **Itineraries and ranking.** An itinerary's band is the band of its weakest segment's operating carrier, and its airspace status is the worst status of its segments. `rank_itineraries` sorts by airspace status (No advisories, Caution, Avoid), then band (Strong record, Typical, Higher rate, then Limited data, which is labelled and never called safer or less safe), then price, then duration. Two-ticket connections are ranked the same way in their own section.
 
